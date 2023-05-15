@@ -16,9 +16,6 @@ const qSchema = new Schema({
     activityCaregories: {
         type: String,
     },
-    lessonNumber: {
-        type: Array,
-    },
 
     answer: {
         type: String

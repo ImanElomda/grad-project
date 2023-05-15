@@ -2,8 +2,8 @@ import { qbankModel } from "../../../DB/model/qbank.model.js";
 
 export const addQuestion = async (req, res) => {
     try {
-        const { questionStyle, complexity, domain, subDomain, concept, activityCategories, lessonNumber } = req.body;
-        const Myquestion = new qbankModel({ questionStyle, complexity, domain, subDomain, concept, activityCategories, lessonNumber })
+        const { questionStyle, complexity, domain, subDomain, concept, activityCategories, currentLesson,indecators } = req.body;
+        const Myquestion = new qbankModel({ questionStyle, complexity, domain, subDomain, concept, activityCategories, currentLesson,indecators })
         const savedquestion = await Myquestion.save()
         res.json({ message: "Done", savedquestion })
     } catch (error) {
