@@ -13,7 +13,7 @@ export const addBloomLevel = async (req, res) => {
 };
 
 export const getActivityCategories = async (req, res) => {
-    const { bloomLevel } = req.query
+    const { bloomLevel } = req.params
     const { activityCategories: [activityCategories] } = await bloomLevelModel.findOne({ bloomLevel }).select('activityCategories')
     if (!activityCategories) {
         res.status(500).json({ message: "error" })
