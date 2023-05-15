@@ -13,8 +13,7 @@ export const addStudent = async (req, res) => {
         return res.json({ message: "Done", savedStudent })
     } catch (error) {
         return res.json({ message: "error", error })
-        console.log(error);
-    } git
+    }
 };
 export const getStudent = async (req, res) => {
     const { studentName } = req.params
@@ -37,41 +36,32 @@ export const studentQuestion = async (req, res) => {
 
     let question
     let { data: { activityCategories } } = await axios.get(`${process.env.ENDURL}/api/v1/bloomLevel/getActivityCategories/${bloomLevel}`)
-    // console.log(activityCategories);
 
     let { data: { answerFormat } } = await axios.get(`${process.env.ENDURL}/api/v1/domain/getAnswerFormat/${domain}/${subDomain}`)
 
     let { data: { indecators } } = await axios.get(`${process.env.ENDURL}/api/v1/kolbStyle/getIndecators/${KolbStyle}`)
-
-    console.log(indecators);
-
-    console.log(answerFormat);
 
 
     if (KolbStyle == "Divergent") {
 
         try {
             if (GPDK == "Beginner") {
+                question = await qbankModel.findOne({ complexity: { $in: [1, 2] }, indecators: indecators[0], activityCategories: activityCategories, currentLesson: currentLesson })
 
-                console.log("in intermiate");
-                question = await qbankModel.findOne({ complexity: { $in: [1, 2] }, indecators: indecators[0], activityCategories: activityCategories,currentLesson: currentLesson })
-                console.log(question);
-                // console.log(question);
                 return res.json({ message: `${question.questionStyle}. Present your answer using examples and images` })
 
 
+
             } else if (GPDK == "Intermediate") {
-                console.log("in intermiate");
-                question = await qbankModel.findOne({ complexity: { $in: [3, 4] }, indecators: indecators[1], activityCategories: activityCategories,currentLesson: currentLesson })
-                console.log(question);
-                // console.log(question);
+                question = await qbankModel.findOne({ complexity: { $in: [3, 4] }, indecators: indecators[1], activityCategories: activityCategories, currentLesson: currentLesson })
+
                 return res.json({ message: `${question.questionStyle}. Present your answer using examples and images` })
 
 
 
             }
             else if (GPDK == "Excellent") {
-                question = await qbankModel.findOne({ complexity: { $in: [5, 6] }, indecators: indecators[2], activityCategories: activityCategories,currentLesson: currentLesson })
+                question = await qbankModel.findOne({ complexity: { $in: [5, 6] }, indecators: indecators[2], activityCategories: activityCategories, currentLesson: currentLesson })
                 console.log(question);
                 return res.json({ message: `${question.questionStyle}. Present your answer using examples and images` })
             }
@@ -83,26 +73,27 @@ export const studentQuestion = async (req, res) => {
 
         }
         catch (error) {
-            return res.json({ message: "catch error", error })
-            console.log(error);
+            res.json({ message: "catch error", error })
+
+
         }
     } else if (KolbStyle == "Assimilator") {
         try {
             if (GPDK == "Beginner") {
 
-                question = await qbankModel.findOne({ complexity: { $in: [1, 2] }, indecators: indecators[0], activityCategories: activityCategories,currentLesson: currentLesson })
+                question = await qbankModel.findOne({ complexity: { $in: [1, 2] }, indecators: indecators[0], activityCategories: activityCategories, currentLesson: currentLesson })
 
                 return res.json({ message: `${question.questionStyle}. Present your answer in an organized shape like a table` })
 
 
             } else if (GPDK == "Intermediate") {
-                question = await qbankModel.findOne({ complexity: { $in: [3, 4] }, indecators: indecators[1], activityCategories: activityCategories,currentLesson: currentLesson })
+                question = await qbankModel.findOne({ complexity: { $in: [3, 4] }, indecators: indecators[1], activityCategories: activityCategories })
 
                 return res.json({ message: `${question.questionStyle}. Present your answer in an organized shape like a table` })
 
             }
             else if (GPDK == "Excellent") {
-                question = await qbankModel.findOne({ complexity: { $in: [5, 6] }, indecators: indecators[2], activityCategories: activityCategories,currentLesson: currentLesson })
+                question = await qbankModel.findOne({ complexity: { $in: [5, 6] }, indecators: indecators[2], activityCategories: activityCategories })
                 return res.json({ message: `${question.questionStyle}. Present your answer in an organized shape like a table` })
 
 
@@ -119,21 +110,21 @@ export const studentQuestion = async (req, res) => {
         try {
             if (GPDK == "Beginner") {
 
-                question = await qbankModel.findOne({ complexity: { $in: [1, 2] }, indecators: indecators[0], activityCategories: activityCategories,currentLesson: currentLesson })
-                console.log(question);
+                question = await qbankModel.findOne({ complexity: { $in: [1, 2] }, indecators: indecators[0], activityCategories: activityCategories, currentLesson: currentLesson })
 
-                return res.json({ message: `${question.questionStyle}.Present your answer as an organized shape. ${answerFormat}` })
+
+                return res.json({ message: `${question.questionStyle}. Present your answer as an organized shape. ${answerFormat}` })
 
 
             } else if (GPDK == "Intermediate") {
-                question = await qbankModel.findOne({ complexity: { $in: [3, 4] }, indecators: indecators[1], activityCategories: activityCategories,currentLesson: currentLesson })
+                question = await qbankModel.findOne({ complexity: { $in: [3, 4] }, indecators: indecators[1], activityCategories: activityCategories, currentLesson: currentLesson })
                 return res.json({ message: `${question.questionStyle}. Present your answer as an organized shape. ${answerFormat}` })
 
 
 
             }
             else if (GPDK == "Excellent") {
-                question = await qbankModel.findOne({ complexity: { $in: [5, 6] }, indecators: indecators[2], activityCategories: activityCategories,currentLesson: currentLesson })
+                question = await qbankModel.findOne({ complexity: { $in: [5, 6] }, indecators: indecators[1], activityCategories: activityCategories, currentLesson: currentLesson })
                 return res.json({ message: `${question.questionStyle}. Present your answer as an organized shape. ${answerFormat}` })
 
 
@@ -145,19 +136,19 @@ export const studentQuestion = async (req, res) => {
         }
         catch (error) {
             return res.json({ message: "catch error", error })
-            console.log(error);
+
         }
     } else if (KolbStyle == "Accommodator") {
         try {
             if (GPDK == "Beginner") {
-                question = await qbankModel.findOne({ complexity: { $in: [1, 2] }, indecators: indecators[0], activityCategories: activityCategories,currentLesson: currentLesson })
-                console.log(question);
+                question = await qbankModel.findOne({ complexity: { $in: [1, 2] }, indecators: indecators[0], activityCategories: activityCategories, currentLesson: currentLesson })
+
 
                 return res.json({ message: `${question.questionStyle}.Present your answer as a recorded video/audio that explain your opinion` })
 
 
             } else if (GPDK == "Intermediate") {
-                question = await qbankModel.findOne({ complexity: { $in: [3, 4] }, indecators: indecators[1], activityCategories: activityCategories,currentLesson: currentLesson })
+                question = await qbankModel.findOne({ complexity: { $in: [3, 4] }, indecators: indecators[0], activityCategories: activityCategories, currentLesson: currentLesson })
 
                 return res.json({ message: `${question.questionStyle}. Present your answer as a recorded video/audio that explain your opinion` })
 
@@ -165,7 +156,7 @@ export const studentQuestion = async (req, res) => {
 
             }
             else if (GPDK == "Excellent") {
-                question = await qbankModel.findOne({ complexity: { $in: [5, 6] }, indecators: indecators[2], activityCategories: activityCategories,currentLesson: currentLesson })
+                question = await qbankModel.findOne({ complexity: { $in: [5, 6] }, indecators: indecators[0], activityCategories: activityCategories, currentLesson: currentLesson })
                 return res.json({ message: `${question.questionStyle}. Present your answer as a recorded video/audio that explain your opinion` })
 
 
@@ -176,7 +167,8 @@ export const studentQuestion = async (req, res) => {
 
         }
         catch (error) {
-            return res.json({ message: "catch error", error })
+            return res.json({ message: "catch error", error: error.message })
+
         }
     }
 }

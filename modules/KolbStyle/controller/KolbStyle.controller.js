@@ -7,26 +7,26 @@ export const addKolbStyle = async (req, res) => {
         return res.json({ message: "Done", savedkolbStyle })
     } catch (error) {
         return res.json({ message: "error", error })
-        console.log(error);
+
     }
 };
 
 
 export const getIndecators = async (req, res) => {
     const { character } = req.params
-    const KolbStyle = await KolbStyleModel.findOne({character })
+    const KolbStyle = await KolbStyleModel.findOne({ character })
     if (!KolbStyle) {
         return res.status(500).json({ message: "error" })
     } else {
-        const learning_styles =KolbStyle.learning_styles
-        const indecators =[]
-        if(learning_styles.length === 1){
+        const learning_styles = KolbStyle.learning_styles
+        const indecators = []
+        if (learning_styles.length === 1) {
             indecators.push(0);
-        }else if(learning_styles.length === 2){
+        } else if (learning_styles.length === 2) {
             indecators.push(0, -1);
-        }else if(learning_styles.length === 3){
+        } else if (learning_styles.length === 3) {
             indecators.push(0, -1, 1)
-        }else{
+        } else {
             return res.status(404).json({ message: "error" })
         }
         return res.json({ message: "Done", indecators })

@@ -16,12 +16,22 @@ const qSchema = new Schema({
     activityCaregories: {
         type: String,
     },
+    lessonNumber: {
+        type: Array,
+    },
 
     answer: {
         type: String
     },
     complexity: {
         type: Number,
+    },
+    indecators:{
+        type: Number
+    },
+    currentLesson: {
+        type: Schema.Types.ObjectId,
+        ref: "lessons"
     }
 }, {
     timestamps: true

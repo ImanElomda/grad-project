@@ -4,11 +4,13 @@ import express from 'express'
 import mongoose from "mongoose"
 import connectDB from './DB/connection.js'
 import cors from'cors'
+import compression from "compression";
 const index = express()
 const port = process.env.port
 import * as indexRouter from './modules/index.route.js'
 const baseUrl = process.env.baseUrl
 index.use(express.json())
+index.use(compression())
 index.use(cors())
 index.use(`${baseUrl}/auth`,indexRouter.authRouter)
 index.use(`${baseUrl}/student`,indexRouter.studentRouter)

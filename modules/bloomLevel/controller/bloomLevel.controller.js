@@ -8,7 +8,7 @@ export const addBloomLevel = async (req, res) => {
         return res.json({ message: "Done", savedBloomLeve })
     } catch (error) {
         return res.json({ message: "error", error })
-        console.log(error);
+
     }
 };
 

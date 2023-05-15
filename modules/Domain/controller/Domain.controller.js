@@ -8,7 +8,7 @@ export const addDomain = async (req, res) => {
         return res.json({ message: "Done", savedDomain })
     } catch (error) {
         return res.json({ message: "error", error })
-        console.log(error);
+
     }
 };
 
@@ -23,7 +23,7 @@ export const getAnswerFormat = async (req, res) => {
             return res.json({ message: "in-valid" })
         } else {
             return res.status(200).json({ message: "Done", answerFormat: subDomain1.answerFormat })
-            console.log(subDomain1.answerFormat);
+
         }
 
     }
