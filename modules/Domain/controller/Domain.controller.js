@@ -14,7 +14,7 @@ export const addDomain = async (req, res) => {
 
 export const getAnswerFormat = async (req, res) => {
 
-    const { domain, subDomain } = req.params
+    const { domain, subDomain } = req.query
     try {
 
         const subDomain1 = await DomainModel.findOne

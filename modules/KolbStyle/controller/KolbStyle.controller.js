@@ -13,7 +13,7 @@ export const addKolbStyle = async (req, res) => {
 
 
 export const getIndecators = async (req, res) => {
-    const { character } = req.params
+    const { character } = req.query
     const KolbStyle = await KolbStyleModel.findOne({ character })
     if (!KolbStyle) {
         return res.status(500).json({ message: "error" })

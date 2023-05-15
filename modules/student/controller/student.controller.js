@@ -16,7 +16,7 @@ export const addStudent = async (req, res) => {
     }
 };
 export const getStudent = async (req, res) => {
-    const { studentName } = req.params
+    const { studentName } = req.query
     const student = await studentModel.findOne({ studentName }).select('KolbStyle')
     if (!student) {
         res.status(500).json({ message: "error" })
@@ -30,7 +30,7 @@ export const getStudent = async (req, res) => {
 
 
 export const studentQuestion = async (req, res) => {
-    const { GPDK, KolbStyle } = req.params
+    const { GPDK, KolbStyle } = req.query
     const { bloomLevel, domain, subDomain, currentLesson } = req.body
 
 
