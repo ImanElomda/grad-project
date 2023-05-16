@@ -1,0 +1,349 @@
+{
+    "info": {
+        "name": "project",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "lesson",
+            "item": [
+                {
+                    "name": "add lesson",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://grad-project-five.vercel.app/api/v1/lesson/addlesson/6418fe07aa1ce75d2370785a",
+                            "path": [
+                                "api",
+                                "v1",
+                                "lesson",
+                                "addlesson",
+                                "6418fe07aa1ce75d2370785a"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "grad-project-five",
+                                "vercel",
+                                "app"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "\n{\n  \"name\":\"lesson5\",\n  \"bloomLevel\":\"remember\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "student",
+            "item": [
+                {
+                    "name": "addStudent",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://grad-project-five.vercel.app/api/v1/student/addUser",
+                            "path": [
+                                "api",
+                                "v1",
+                                "student",
+                                "addUser"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "grad-project-five",
+                                "vercel",
+                                "app"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n    \"name\":\"Ahmed\",\n     \"KolbStyle\":\"Convergent\",\n     \"GPDK\":\"Beginner\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "getStudentQuestion",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://grad-project-five.vercel.app/api/v1/student/getQuestion/Convergent/Intermediate",
+                            "path": [
+                                "api",
+                                "v1",
+                                "student",
+                                "getQuestion",
+                                "Convergent",
+                                "Intermediate"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "grad-project-five",
+                                "vercel",
+                                "app"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"bloomLevel\":\"Analyzing\",\n  \"domain\":\"science\",\n  \"subDomain\":\"physics\",\n  \"currentLesson\":\"63eff5020f562d147e14fbf5\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "bloomLevel",
+            "item": [
+                {
+                    "name": "getActivityCategories",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://grad-project-five.vercel.app/api/v1/bloomLevel/getActivityCategories/Analyzing",
+                            "path": [
+                                "api",
+                                "v1",
+                                "bloomLevel",
+                                "getActivityCategories",
+                                "Analyzing"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "grad-project-five",
+                                "vercel",
+                                "app"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "addBloomLevel",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://grad-project-five.vercel.app/api/v1/bloomLevel/addBloomLevel",
+                            "path": [
+                                "api",
+                                "v1",
+                                "bloomLevel",
+                                "addBloomLevel"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "grad-project-five",
+                                "vercel",
+                                "app"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"bloomLevel\":\"Creating\",\n  \"activityCategories\":[\"Doing\"]\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "kolbStyle",
+            "item": [
+                {
+                    "name": "addkolbStyle",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://grad-project-five.vercel.app/api/v1/KolbStyle/addkolbStyle",
+                            "path": [
+                                "api",
+                                "v1",
+                                "KolbStyle",
+                                "addkolbStyle"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "grad-project-five",
+                                "vercel",
+                                "app"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"character\":\"accomodator\",\n  \"learning_styles\":[\"direct\"]\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "getIndecators",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://grad-project-five.vercel.app/api/v1/KolbStyle/getIndecators/Assimilator",
+                            "path": [
+                                "api",
+                                "v1",
+                                "KolbStyle",
+                                "getIndecators",
+                                "Assimilator"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "grad-project-five",
+                                "vercel",
+                                "app"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "qbank",
+            "item": [
+                {
+                    "name": "getQuestion",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://grad-project-five.vercel.app/api/v1/qbank/getquestionwithanswer",
+                            "path": [
+                                "api",
+                                "v1",
+                                "qbank",
+                                "getquestionwithanswer"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "grad-project-five",
+                                "vercel",
+                                "app"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{ \n  \"domain\":\"science\",\n  \"subDomain\":\"physics\",\n  \"concept\":\"energy\",\n  \"activityCategories\":\"Comparing\",\n  \"complexity\":1,\n  \"indecators\":0,\n  \"currentLesson\":\"64190467aa1ce75d23707862\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "addquestion",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://grad-project-five.vercel.app/api/v1/qbank/addQ",
+                            "path": [
+                                "api",
+                                "v1",
+                                "qbank",
+                                "addQ"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "grad-project-five",
+                                "vercel",
+                                "app"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"questionStyle\":\"compare between energy and chemical energy2\",\n  \"domain\":\"science\",\n  \"subDomain\":\"physics\",\n  \"concept\":\"energy\",\n  \"activityCategories\":\"Comparing\",\n  \"complexity\":2,\n  \"indecators\":0,\n  \"currentLesson\":\"63eff1b6deab58e23011dbab\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Domain",
+            "item": [
+                {
+                    "name": "getAnswerFormat",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "https://grad-project-five.vercel.app/api/v1/domain/getAnswerFormat/science/physics",
+                            "path": [
+                                "api",
+                                "v1",
+                                "domain",
+                                "getAnswerFormat",
+                                "science",
+                                "physics"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "grad-project-five",
+                                "vercel",
+                                "app"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "addDomain",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "https://grad-project-five.vercel.app/api/v1/domain/addDomain",
+                            "path": [
+                                "api",
+                                "v1",
+                                "domain",
+                                "addDomain"
+                            ],
+                            "protocol": "https",
+                            "host": [
+                                "grad-project-five",
+                                "vercel",
+                                "app"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"domain\":\"science\",\n  \"subDomain\":[\"physics\",\"chemistry\",\"biology\"],\n  \"answerFormat\":\"Describe your experiment with your conclusion\"\n}"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
