@@ -20,7 +20,7 @@ export const addStudent = async (req, res) => {
 
 
 export const studentQuestion = async (req, res) => {
-    const { GPDK, KolbStyle } = req.query
+    const { GPDK, KolbStyle } = req.params
     const { bloomLevel, domain, subDomain, currentLesson } = req.body
 
 

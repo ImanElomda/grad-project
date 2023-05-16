@@ -32,5 +32,3 @@ connectDB()
 index.listen(port, () => {
     console.log(`server running on port ...${port}`);
 })
-index.use(`${baseUrl}/student`,indexRouter.studentRouter)
-index.use(`${baseUrl}/auth`,indexRouter.authRouter)
