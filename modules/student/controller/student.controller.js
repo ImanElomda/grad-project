@@ -15,17 +15,7 @@ export const addStudent = async (req, res) => {
         return res.json({ message: "error", error })
     }
 };
-export const getStudent = async (req, res) => {
-    const { studentName } = req.query
-    const student = await studentModel.findOne({ studentName }).select('KolbStyle')
-    if (!student) {
-        res.status(500).json({ message: "error" })
-    } else {
-        return res.json({ message: "Done", KolbStyle: student.KolbStyle })
-    }
 
-
-}
 
 
 

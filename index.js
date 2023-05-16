@@ -12,7 +12,6 @@ const baseUrl = process.env.baseUrl
 index.use(express.json())
 index.use(compression())
 index.use(cors())
-index.use(`${baseUrl}/auth`,indexRouter.authRouter)
 index.use(`${baseUrl}/student`,indexRouter.studentRouter)
 index.use(`${baseUrl}/lesson`,indexRouter.lessonRouter)
 index.use(`${baseUrl}/qbank`,indexRouter.qbankRouter)
