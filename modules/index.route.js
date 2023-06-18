@@ -6,10 +6,10 @@ import domainRouter from './Domain/Domain.router.js'
 import KolbStyleRouter from './KolbStyle/KolbStyle.route.js'
 
 export {
-    studentRouter,
     lessonRouter,
     qbankRouter,
     bloomLevelRouter,
     domainRouter,
-    KolbStyleRouter
+    KolbStyleRouter,
+    studentRouter
 }
