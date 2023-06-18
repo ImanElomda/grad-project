@@ -4,3 +4,4 @@ const router = Router()
 
 router.post("/addUser",uc.addStudent)
 router.post("/getQuestion/:KolbStyle/:GPDK",uc.studentQuestion)
+export default router
