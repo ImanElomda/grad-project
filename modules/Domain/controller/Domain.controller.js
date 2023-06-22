@@ -7,6 +7,7 @@ export const addDomain = async (req, res) => {
         const savedDomain = await Domain.save()
         return res.json({ message: "Done", savedDomain })
     } catch (error) {
+
         return res.json({ message: "error", error })
 
     }

@@ -1,9 +1,6 @@
-import { bloomLevelModel } from "../../../DB/model/bloomLevel.model.js";
 import axios from "axios";
 import { qbankModel } from "../../../DB/model/qbank.model.js";
 import { studentModel } from "../../../DB/model/student.model.js";
-import { DomainModel } from "../../../DB/model/Domain.model.js";
-import { KolbStyleModel } from "../../../DB/model/KolbStyle.model.js";
 
 export const addStudent = async (req, res) => {
     try {
@@ -15,9 +12,6 @@ export const addStudent = async (req, res) => {
         return res.json({ message: "error", error })
     }
 };
-
-
-
 
 export const studentQuestion = async (req, res) => {
     const { GPDK, KolbStyle } = req.params
@@ -37,17 +31,11 @@ export const studentQuestion = async (req, res) => {
         try {
             if (GPDK == "Beginner") {
                 question = await qbankModel.findOne({ complexity: { $in: [1, 2] }, indecators: indecators[0], activityCategories: activityCategories, currentLesson: currentLesson })
-
                 return res.json({ message: `${question.questionStyle}. Present your answer using examples and images` })
-
-
 
             } else if (GPDK == "Intermediate") {
                 question = await qbankModel.findOne({ complexity: { $in: [3, 4] }, indecators: indecators[1], activityCategories: activityCategories, currentLesson: currentLesson })
-
                 return res.json({ message: `${question.questionStyle}. Present your answer using examples and images` })
-
-
 
             }
             else if (GPDK == "Excellent") {
@@ -55,30 +43,23 @@ export const studentQuestion = async (req, res) => {
                 console.log(question);
                 return res.json({ message: `${question.questionStyle}. Present your answer using examples and images` })
             }
-
             else {
                 return res.json({ message: "Not found" })
             }
-
-
         }
         catch (error) {
             res.json({ message: "catch error", error })
-
-
         }
+
     } else if (KolbStyle == "Assimilator") {
         try {
             if (GPDK == "Beginner") {
-
                 question = await qbankModel.findOne({ complexity: { $in: [1, 2] }, indecators: indecators[0], activityCategories: activityCategories, currentLesson: currentLesson })
 
                 return res.json({ message: `${question.questionStyle}. Present your answer in an organized shape like a table` })
 
-
             } else if (GPDK == "Intermediate") {
                 question = await qbankModel.findOne({ complexity: { $in: [3, 4] }, indecators: indecators[1], activityCategories: activityCategories })
-
                 return res.json({ message: `${question.questionStyle}. Present your answer in an organized shape like a table` })
 
             }
@@ -90,19 +71,15 @@ export const studentQuestion = async (req, res) => {
             } else {
                 return res.json({ message: "Not found" })
             }
-
-
         }
         catch (error) {
             return res.json({ message: "catch error", error })
         }
+
     } else if (KolbStyle == "Convergent") {
         try {
             if (GPDK == "Beginner") {
-
                 question = await qbankModel.findOne({ complexity: { $in: [1, 2] }, indecators: indecators[0], activityCategories: activityCategories, currentLesson: currentLesson })
-
-
                 return res.json({ message: `${question.questionStyle}. Present your answer as an organized shape. ${answerFormat}` })
 
 
@@ -110,55 +87,41 @@ export const studentQuestion = async (req, res) => {
                 question = await qbankModel.findOne({ complexity: { $in: [3, 4] }, indecators: indecators[1], activityCategories: activityCategories, currentLesson: currentLesson })
                 return res.json({ message: `${question.questionStyle}. Present your answer as an organized shape. ${answerFormat}` })
 
-
-
             }
             else if (GPDK == "Excellent") {
                 question = await qbankModel.findOne({ complexity: { $in: [5, 6] }, indecators: indecators[1], activityCategories: activityCategories, currentLesson: currentLesson })
                 return res.json({ message: `${question.questionStyle}. Present your answer as an organized shape. ${answerFormat}` })
 
-
             } else {
                 return res.json({ message: "Not found" })
             }
-
-
         }
         catch (error) {
             return res.json({ message: "catch error", error })
 
         }
+
     } else if (KolbStyle == "Accommodator") {
         try {
             if (GPDK == "Beginner") {
                 question = await qbankModel.findOne({ complexity: { $in: [1, 2] }, indecators: indecators[0], activityCategories: activityCategories, currentLesson: currentLesson })
-
-
                 return res.json({ message: `${question.questionStyle}.Present your answer as a recorded video/audio that explain your opinion` })
-
 
             } else if (GPDK == "Intermediate") {
                 question = await qbankModel.findOne({ complexity: { $in: [3, 4] }, indecators: indecators[0], activityCategories: activityCategories, currentLesson: currentLesson })
-
                 return res.json({ message: `${question.questionStyle}. Present your answer as a recorded video/audio that explain your opinion` })
-
-
 
             }
             else if (GPDK == "Excellent") {
                 question = await qbankModel.findOne({ complexity: { $in: [5, 6] }, indecators: indecators[0], activityCategories: activityCategories, currentLesson: currentLesson })
                 return res.json({ message: `${question.questionStyle}. Present your answer as a recorded video/audio that explain your opinion` })
 
-
             } else {
                 return res.json({ message: "Not found" })
             }
-
-
         }
         catch (error) {
             return res.json({ message: "catch error", error: error.message })
-
         }
     }
 }

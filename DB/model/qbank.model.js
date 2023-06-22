@@ -13,7 +13,7 @@ const qSchema = new Schema({
     concept: {
         type: String,
     },
-    activityCaregories: {
+    activityCategories: {
         type: String,
     },
 
